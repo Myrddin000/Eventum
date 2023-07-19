@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "EventumDB", "EventumDB\EventumDB.sqlproj", "{2ABC044F-DBB8-4C07-BE7F-1CC3B7697B31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventumAPI", "EventumAPI\EventumAPI.csproj", "{A34BF290-4109-4E68-935E-722E47A092BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{B16BBC5F-EA94-471C-A344-3AD0CDD5CCF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{7ECA3265-187F-4370-A5E9-CE7FCE89C1DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2ABC044F-DBB8-4C07-BE7F-1CC3B7697B31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ABC044F-DBB8-4C07-BE7F-1CC3B7697B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ABC044F-DBB8-4C07-BE7F-1CC3B7697B31}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2ABC044F-DBB8-4C07-BE7F-1CC3B7697B31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ABC044F-DBB8-4C07-BE7F-1CC3B7697B31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ABC044F-DBB8-4C07-BE7F-1CC3B7697B31}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A34BF290-4109-4E68-935E-722E47A092BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A34BF290-4109-4E68-935E-722E47A092BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A34BF290-4109-4E68-935E-722E47A092BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A34BF290-4109-4E68-935E-722E47A092BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B16BBC5F-EA94-471C-A344-3AD0CDD5CCF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B16BBC5F-EA94-471C-A344-3AD0CDD5CCF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B16BBC5F-EA94-471C-A344-3AD0CDD5CCF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B16BBC5F-EA94-471C-A344-3AD0CDD5CCF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ECA3265-187F-4370-A5E9-CE7FCE89C1DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ECA3265-187F-4370-A5E9-CE7FCE89C1DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ECA3265-187F-4370-A5E9-CE7FCE89C1DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ECA3265-187F-4370-A5E9-CE7FCE89C1DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1026A4A-B4D3-4B48-9F3F-3473230834C3}
+	EndGlobalSection
+EndGlobal
