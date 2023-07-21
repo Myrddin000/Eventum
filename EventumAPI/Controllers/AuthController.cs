@@ -18,6 +18,9 @@ namespace EventumAPI.Controllers
             _Configuration = configuration;
         }
 
+        [HttpPost]
+        [Produces(typeof(TokenDTO))]
+
         public IActionResult Post(LoginDTO loginDTO)
         {
             try
