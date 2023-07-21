@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Services
 {
-    public class Eventrepository : IEventRepository
+    public class EventRepository : IEventRepository
     {
         private readonly string connectionstring = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = master; Integrated Security = True;";
 

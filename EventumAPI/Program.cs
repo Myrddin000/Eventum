@@ -1,3 +1,7 @@
+using BLL.Interfaces;
+using BLL.Services;
+using DAL.Interfaces;
+using DAL.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -56,6 +60,21 @@ builder.Services.AddAuthentication(options =>
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
         };
     });
+
+
+// Permet à l'appli (via le controller) d'executer les interface et service
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IEventRepository, EventRepository>();
+
+//builder.Services.AddScoped<IEventService, EventService>();
+
+builder.Services.AddScoped<IReminderRepository, ReminderRepository>();
+
+//builder.Services.AddScoped<IReminderService, ReminderService>();
+
 
 
 
