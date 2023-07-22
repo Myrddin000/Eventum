@@ -82,7 +82,7 @@ namespace BLL.Services
         }
 
 
-        public void Update(UserFormDTO userform)
+        public void Update(UserDTO userform)
         {
             if(userform.User_pseudo == null || userform.User_email == null || userform.User_password == null)
             {

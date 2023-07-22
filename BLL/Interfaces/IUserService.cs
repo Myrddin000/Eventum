@@ -13,7 +13,7 @@ namespace BLL.Interfaces
 
         IEnumerable<UserDTO> GetAll();
 
-        void Update(UserFormDTO userformDTO);
+        void Update(UserDTO userformDTO);
 
         void Delete(Guid User_id);
 

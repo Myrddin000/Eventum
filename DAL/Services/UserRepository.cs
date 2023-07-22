@@ -13,14 +13,16 @@ namespace DAL.Services
 {
     public class UserRepository : IUserRepository
     {
-        private readonly string connectionstring = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = master; Integrated Security = True;"; 
+        private readonly string connectionstring = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = EventumDB; Integrated Security = True";
+
+        //@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = master; Integrated Security = True;"; 
 
         public void Create(UserEntities user)
         {
             using SqlConnection sqlConnection = new SqlConnection(connectionstring);
             sqlConnection.Open();
             using SqlCommand cmd = sqlConnection.CreateCommand();
-            cmd.CommandText = @"INSERT INTO [Users] ([user_pseudo][User_email][User_password]) VALUES (@User_pseudo, @Email, @Password)";
+            cmd.CommandText = $"INSERT INTO [Users] ([User_pseudo],[User_email],[User_password]) VALUES (@{nameof(UserEntities.User_pseudo)}, @{nameof(UserEntities.User_email)}, @{nameof(UserEntities.User_password)})";
             cmd.Parameters.AddWithValue(nameof(UserEntities.User_pseudo), user.User_pseudo);
             cmd.Parameters.AddWithValue(nameof(UserEntities.User_email), user.User_email);
             cmd.Parameters.AddWithValue(nameof(UserEntities.User_password), user.User_password);
@@ -34,7 +36,7 @@ namespace DAL.Services
             using SqlConnection sqlConnection = new SqlConnection(connectionstring);
             sqlConnection.Open();
             using SqlCommand cmd = sqlConnection.CreateCommand();
-            cmd.CommandText = "SELECT * FROM[Users]";
+            cmd.CommandText = @"SELECT * FROM [Users]";
             using SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -56,7 +58,7 @@ namespace DAL.Services
             using SqlConnection sqlConnection = new SqlConnection(connectionstring);
             sqlConnection.Open();
             using SqlCommand cmd = sqlConnection.CreateCommand();
-            cmd.CommandText = @"UPDATE [Users] SET [User_pseudo] = @Pseudo, [User_email] = @Email, [User_password] = @Password WHERE User_id = @Id";
+            cmd.CommandText = $"UPDATE [Users] SET [User_pseudo] = @{nameof(UserEntities.User_pseudo)}, [User_email] = @{nameof(UserEntities.User_pseudo)}, [User_password] = @{nameof(UserEntities.User_password)} WHERE User_id = @{nameof(UserEntities.User_id)}";
             cmd.Parameters.AddWithValue("User_id", user.User_id);
             cmd.Parameters.AddWithValue(nameof(UserEntities.User_pseudo), user.User_pseudo);
             cmd.Parameters.AddWithValue(nameof(UserEntities.User_email), user.User_email);
@@ -74,7 +76,7 @@ namespace DAL.Services
                 sqlConnection.Open();
                 using (SqlCommand cmd = sqlConnection.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM [Users] WHERE [User_id] = @Id";
+                    cmd.CommandText = "DELETE FROM [Users] WHERE [User_id] = @User_id";
                     cmd.Parameters.AddWithValue("User_id", User_id);
                     cmd.ExecuteNonQuery();
                 }
@@ -89,7 +91,7 @@ namespace DAL.Services
                 sqlConnection.Open();
                 using(SqlCommand cmd = sqlConnection.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM [Users] WHERE [User_id] = @Id";
+                    cmd.CommandText = "SELECT * FROM [Users] WHERE [User_id] = @User_id";
                     cmd.Parameters.AddWithValue("User_id", User_id);
 
                     using SqlDataReader reader = cmd.ExecuteReader();

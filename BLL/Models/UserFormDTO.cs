@@ -8,6 +8,7 @@ namespace BLL.Models
 {
     public class UserFormDTO
     {
+
         public string User_pseudo { get; set; } = string.Empty;
 
         public string User_email { get; set; } = string.Empty;

@@ -23,6 +23,7 @@ namespace BLL.Tools
                 User_password = user.User_password,
             };
         }
+      
 
         public static UserEntities ToDAL(this UserFormDTO user)
         {
