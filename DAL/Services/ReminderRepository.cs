@@ -12,7 +12,7 @@ namespace DAL.Services
 {
     public class ReminderRepository : IReminderRepository
     {
-        private readonly string connectionstring = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = master; Integrated Security = True;";
+        private readonly string connectionstring = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = EventumDB; Integrated Security = True";
 
         public void Create(ReminderEntities remind)
         {

@@ -58,7 +58,7 @@ namespace DAL.Services
             using SqlConnection sqlConnection = new SqlConnection(connectionstring);
             sqlConnection.Open();
             using SqlCommand cmd = sqlConnection.CreateCommand();
-            cmd.CommandText = $"UPDATE [Users] SET [User_pseudo] = @{nameof(UserEntities.User_pseudo)}, [User_email] = @{nameof(UserEntities.User_pseudo)}, [User_password] = @{nameof(UserEntities.User_password)} WHERE User_id = @{nameof(UserEntities.User_id)}";
+            cmd.CommandText = $"UPDATE [Users] SET [User_pseudo] = @{nameof(UserEntities.User_pseudo)}, [User_email] = @{nameof(UserEntities.User_email)}, [User_password] = @{nameof(UserEntities.User_password)} WHERE User_id = @{nameof(UserEntities.User_id)}";
             cmd.Parameters.AddWithValue("User_id", user.User_id);
             cmd.Parameters.AddWithValue(nameof(UserEntities.User_pseudo), user.User_pseudo);
             cmd.Parameters.AddWithValue(nameof(UserEntities.User_email), user.User_email);

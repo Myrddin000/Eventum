@@ -20,6 +20,8 @@ namespace DAL.Models
 
         public DateTime Event_end_time { get; set; }
 
+        public string Event_note { get; set;} = string.Empty;
+
 
     }
 }

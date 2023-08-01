@@ -68,9 +68,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IEventRepository, EventRepository>();
-
-//builder.Services.AddScoped<IEventService, EventService>();
-
+builder.Services.AddScoped<IEventService, EventService>();
 builder.Services.AddScoped<IReminderRepository, ReminderRepository>();
 
 //builder.Services.AddScoped<IReminderService, ReminderService>();

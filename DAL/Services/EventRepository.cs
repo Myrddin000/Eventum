@@ -12,19 +12,19 @@ namespace DAL.Services
 {
     public class EventRepository : IEventRepository
     {
-        private readonly string connectionstring = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = master; Integrated Security = True;";
+        private readonly string connectionstring = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = EventumDB; Integrated Security = True";
 
         public void Create(EventEntities even)
         {
             using SqlConnection sqlConnection = new SqlConnection(connectionstring);
             sqlConnection.Open();
             using SqlCommand cmd = sqlConnection.CreateCommand();
-            cmd.CommandText = $"INSERT INTO [Events]([Event_title],[Event_start_time],[Event_end_time],[Reminder_id]) VALUES(@{nameof(EventEntities.Event_title)}, @{nameof(EventEntities.Event_start_time)}, @{nameof(EventEntities.Event_end_time)}, @{nameof(EventEntities.Reminder_id)})";
+            cmd.CommandText = $"INSERT INTO [Events] ([Event_title],[Event_start_time],[Event_end_time],[Event_note]) VALUES (@{nameof(EventEntities.Event_title)}, @{nameof(EventEntities.Event_start_time)}, @{nameof(EventEntities.Event_end_time)},@{nameof(EventEntities.Event_note)})";
             cmd.Parameters.AddWithValue(nameof(EventEntities.Event_title), even.Event_title);
             cmd.Parameters.AddWithValue(nameof(EventEntities.Event_start_time), even.Event_start_time);
             cmd.Parameters.AddWithValue(nameof(EventEntities.Event_end_time), even.Event_end_time);
-            cmd.Parameters.AddWithValue(nameof(EventEntities.Reminder_id), even.Reminder_id);
-
+            cmd.Parameters.AddWithValue(nameof(EventEntities.Event_note), even.Event_note);
+            //cmd.Parameters.AddWithValue(nameof(EventEntities.Reminder_id), even.Reminder_id);
             cmd.ExecuteNonQuery();
             sqlConnection.Close();
         }
@@ -45,7 +45,8 @@ namespace DAL.Services
                     Event_title = (string)reader[nameof(EventEntities.Event_title)],
                     Event_start_time = (DateTime)reader[nameof(EventEntities.Event_start_time)],
                     Event_end_time = (DateTime)reader[nameof(EventEntities.Event_end_time)],
-                    Reminder_id = (Guid)reader[nameof(EventEntities.Reminder_id)],
+                    Event_note = (string)reader[nameof(EventEntities.Event_note)],
+                    //Reminder_id = (Guid)reader[nameof(EventEntities.Reminder_id)],
                 };
             }
         }
@@ -55,11 +56,12 @@ namespace DAL.Services
             using SqlConnection sqlConnection = new SqlConnection(connectionstring);
             sqlConnection.Open();
             using SqlCommand cmd = sqlConnection.CreateCommand();
-            cmd.CommandText = $"UPDATE [Events] SET [Event_title] = @{nameof(EventEntities.Event_title)}, [Event_start_time] = @{nameof(EventEntities.Event_start_time)}, [Event_end_time] = @{nameof(EventEntities.Event_end_time)}, [Reminder_id] = @{nameof(EventEntities.Reminder_id)}";
+            cmd.CommandText = $"UPDATE [Events] SET [Event_title] = @{nameof(EventEntities.Event_title)}, [Event_start_time] = @{nameof(EventEntities.Event_start_time)}, [Event_end_time] = @{nameof(EventEntities.Event_end_time)}, [Event_note] = @{nameof(EventEntities.Event_note)} WHERE Event_id = @{nameof(EventEntities.Event_id)}";
+            cmd.Parameters.AddWithValue(nameof(EventEntities.Event_id), even.Event_id);
             cmd.Parameters.AddWithValue(nameof(EventEntities.Event_title), even.Event_title);
             cmd.Parameters.AddWithValue(nameof(EventEntities.Event_start_time), even.Event_start_time);
             cmd.Parameters.AddWithValue(nameof(EventEntities.Event_end_time), even.Event_end_time);
-            cmd.Parameters.AddWithValue(nameof(EventEntities.Reminder_id), even.Reminder_id);
+            cmd.Parameters.AddWithValue(nameof(EventEntities.Event_note), even.Event_note);
             cmd.ExecuteNonQuery();
             sqlConnection.Close();
 
@@ -98,11 +100,12 @@ namespace DAL.Services
                     {
                         return new EventEntities
                         {
+                            Event_id = (Guid)reader[nameof(EventEntities.Event_id)],
                             Event_title = (string)reader[nameof(EventEntities.Event_title)],
                             Event_start_time = (DateTime)reader[nameof(EventEntities.Event_start_time)],
                             Event_end_time = (DateTime)reader[nameof(EventEntities.Event_end_time)],
                             Event_note = (string)reader[nameof(EventEntities.Event_note)],
-                            Reminder_id = (Guid)reader[nameof(EventEntities.Reminder_id)],
+                            
 
                         };
                     }

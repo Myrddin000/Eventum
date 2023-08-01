@@ -13,7 +13,7 @@ namespace DAL.Services
 {
     public class AuthRepository : IAuthRepository
     {
-        private readonly string connectionstring = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = master; Integrated Security = True;";
+        private readonly string connectionstring = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = EventumDB; Integrated Security = True";
 
         // récup les infos dans appsettingssjon
         private readonly IConfiguration _Configuration;
