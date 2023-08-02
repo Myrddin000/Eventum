@@ -145,6 +145,52 @@ namespace BLL.Tools
         }
 
 
+        //Reminder Mappers
+
+
+        public static ReminderEntities ToDAL(this ReminderDTO reminder)     //   pour UPDATE
+        {
+            return new ReminderEntities
+            {
+                Reminder_id = reminder.Reminder_id,
+                Reminder_title = reminder.Reminder_title,
+                Reminder_time = reminder.Reminder_time,
+            };
+        }
+
+        public static ReminderEntities ToDAL(this ReminderFormDTO reminder) //  pour CREATE
+        {
+            return new ReminderEntities
+            {
+                Reminder_title = reminder.Reminder_title,
+                Reminder_time = reminder.Reminder_time
+            };
+        }
+
+        public static IEnumerable<ReminderDTO> ToBLL(this IEnumerable<ReminderEntities> reminder)  // pour GETALL
+        {
+            foreach(ReminderEntities item in reminder)
+            {
+                yield return new ReminderDTO
+                {
+                    Reminder_id = item.Reminder_id,
+                    Reminder_title = item.Reminder_title,
+                    Reminder_time = item.Reminder_time,
+                };
+            }
+        }
+
+        public static ReminderDTO ToBLL(this ReminderEntities reminder)  // pour GETBYID
+        {
+            return new ReminderDTO
+            {
+                Reminder_id = reminder.Reminder_id,
+                Reminder_title = reminder.Reminder_title,
+                Reminder_time = reminder.Reminder_time,
+            };
+        }
+
+
 
       
     }
